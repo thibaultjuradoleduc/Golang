@@ -31,7 +31,7 @@ func main() {
 	//This method takes in the URL path "/" and a function that takes in a response writer, and a http request.
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 
-		span := tracer.StartSpan("web.request", tracer.ResourceName("/"))
+		//span := tracer.StartSpan("web.request", tracer.ResourceName("/"))
 
 		//If errors show an internal server error message
 		if err := templates.ExecuteTemplate(w, "homepage.html", nil); err != nil {
