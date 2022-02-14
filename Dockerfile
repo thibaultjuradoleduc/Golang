@@ -1,4 +1,4 @@
-FROM golang:1go.11
+FROM openshift/golang:1.14.7-ubi8
 RUN mkdir -p /go/src/app
 WORKDIR /go/src/app
 COPY . /go/src/app

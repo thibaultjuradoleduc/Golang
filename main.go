@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"html/template"
 	"net/http"
-	//"gopkg.in/DataDog/dd-trace-go.v1/profiler"
 )
 
 func main() {
