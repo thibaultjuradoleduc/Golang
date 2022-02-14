@@ -3,10 +3,35 @@ import (
 	"net/http"
 	"fmt"
 	"html/template"
+	"github.com.gin-gonic/gin"
+    httptrace
+    "gopkg.in/DataDog/dd-trace-go.v1/contrib/net/http"
+    "gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
+    "gopkg.in/DataDog/dd-trace-go.v1/profiler"
  )
  
  func main() {
  
+	tracer.Start(tracer.WithDebugMode(true), tracer.WithServiceName("golang-test"))
+    defer tracer.Stop()
+
+    if err := profiler.Start(
+        profiler.WithProfileTypes(
+            profiler.CPUProfile,
+            profiler.HeapProfile,
+
+            // The profiles below are disabled by
+            // default to keep overhead low, but
+            // can be enabled as needed.
+            // profiler.BlockProfile,
+            // profiler.MutexProfile,
+            // profiler.GoroutineProfile,
+        ),
+    ); err != nil {
+        log.Fatal(err)
+    }
+	defer profiler.Stop()
+
 	//We tell Go exactly where we can find our html file. We ask Go to parse the html file (Notice
 	// the relative path). We wrap it in a call to template.Must() which handles any errors
 	
