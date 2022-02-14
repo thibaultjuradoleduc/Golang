@@ -5,8 +5,7 @@ import (
 	"html/template"
 	"net/http"
 	"github.com.gin-gonic/gin"
-	httptrace
-    "gopkg.in/DataDog/dd-trace-go.v1/contrib/net/http"
+	httptrace "gopkg.in/DataDog/dd-trace-go.v1/contrib/net/http"
     "gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
     "gopkg.in/DataDog/dd-trace-go.v1/profiler"
 )
