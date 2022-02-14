@@ -1,4 +1,4 @@
-FROM golang:1.11
+FROM golang:1.17
 RUN git config --global http.sslVerify false
 RUN mkdir -p /go/src/app
 WORKDIR /go/src/app
