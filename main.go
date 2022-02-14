@@ -8,9 +8,9 @@ import (
 )
 
 func main() {
-	
-	tracer.Start(tracer.WithServiceName("Golang-Helloworld"))
-    defer tracer.Stop()
+
+	//tracer.Start(tracer.WithServiceName("Golang-Helloworld"))
+    //defer tracer.Stop()
 
 	//We tell Go exactly where we can find our html file. We ask Go to parse the html file (Notice
 	// the relative path). We wrap it in a call to template.Must() which handles any errors
@@ -37,8 +37,8 @@ func main() {
 		if err := templates.ExecuteTemplate(w, "homepage.html", nil); err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 		}
-		defer span.Finish()
-		span.SetTag("http.url", r.URL.Path)
+		//defer span.Finish()
+		//span.SetTag("http.url", r.URL.Path)
 	})
 
 	fmt.Println("Listening")
