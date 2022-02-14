@@ -4,6 +4,10 @@ import (
 	"fmt"
 	"html/template"
 	"net/http"
+	httptrace
+    "gopkg.in/DataDog/dd-trace-go.v1/contrib/net/http"
+    "gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
+    "gopkg.in/DataDog/dd-trace-go.v1/profiler"
 )
 
 func main() {

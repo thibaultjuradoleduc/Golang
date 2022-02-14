@@ -1,6 +1,6 @@
 FROM golang:1.11
 RUN git config --global http.sslVerify false
-RUN go get gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer
+RUN go get gopkg.in/DataDog/dd-trace-go.v1/...
 RUN mkdir -p /go/src/app
 WORKDIR /go/src/app
 COPY . /go/src/app
