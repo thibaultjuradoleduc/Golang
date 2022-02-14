@@ -1,17 +1,20 @@
 package main
 
 import (
-	"fmt"
-	"html/template"
-	"github.com/gin-gonic/gin"
+	//"fmt"
+	//"html/template"
+	//"github.com/gin-gonic/gin"
 	"net/http"
 	httptrace "gopkg.in/DataDog/dd-trace-go.v1/contrib/net/http"
     "gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
-    "gopkg.in/DataDog/dd-trace-go.v1/profiler"
+    //"gopkg.in/DataDog/dd-trace-go.v1/profiler"
 )
 
 func main() {
 
+	tracer.Start()
+    defer tracer.Stop()
+	/*
 	//We tell Go exactly where we can find our html file. We ask Go to parse the html file (Notice
 	// the relative path). We wrap it in a call to template.Must() which handles any errors
 
@@ -38,4 +41,12 @@ func main() {
 	})
 	fmt.Println("Listening")
 	fmt.Println(http.ListenAndServe(":8080", nil))
+	*/
+	// Create a traced mux router
+	mux := httptrace.NewServeMux()
+	// Continue using the router as you normally would.
+	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("Hello World!"))
+	})
+	http.ListenAndServe(":8080", mux)
 }
