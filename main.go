@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"html/template"
-	"github.com.gin-gonic/gin"
+	"github.com/gin-gonic/gin"
 	"net/http"
 	httptrace "gopkg.in/DataDog/dd-trace-go.v1/contrib/net/http"
     "gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
